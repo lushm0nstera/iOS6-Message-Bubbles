@@ -71,3 +71,12 @@ extension Color {
     
     static var gemGradient = LinearGradient(colors: [.white, .white.opacity(0.2)], startPoint: .top, endPoint: .bottom)
 }
+
+extension Text {
+    func highlight() -> some View {
+        return ZStack {
+            self.foregroundStyle(.white.opacity(0.5)).offset(y: 1)
+            self
+        }
+    }
+}
