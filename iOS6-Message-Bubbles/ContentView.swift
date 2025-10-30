@@ -9,47 +9,44 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let messages: [String] = ["Hello", "Hi! Can you show me what an empty message looks like?", "", "Cool. What about the green bubble?", "Uh oh, I think I lost cell service", "that's fine, it sure is great to live in 2012"]
-    
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 15) {
             HStack {
                 Spacer()
-                MessageBubble(content: "Hello", fromUser: true, isSMS: false)
+                MessageBubble("Hello", fromUser: true)
             }
             HStack {
-                MessageBubble(content: "Hi! This is a longer message. Can you show me what an empty message bubble looks like?", fromUser: false, isSMS: false)
+                MessageBubble("Hi! This is a longer message. Can you show me what an empty message bubble looks like?", fromUser: false)
                 Spacer()
             }
             HStack {
                 Spacer()
                 VStack(alignment: .trailing) {
-                    MessageBubble(content: "Sure", fromUser: true, isSMS: false)
-                    MessageBubble(content: "", fromUser: true, isSMS: false)
+                    MessageBubble("Sure", fromUser: true)
+                    MessageBubble("", fromUser: true)
                 }
             }
             HStack {
-                MessageBubble(content: "Cool. What about a green bubble?", fromUser: false, isSMS: false)
+                MessageBubble("Cool. What about a green bubble?", fromUser: false)
                 Spacer()
             }
             HStack {
                 Spacer()
-                VStack(alignment: .trailing, spacing: 5) {
-                    MessageBubble(content: "\n\n\n\n.____________.", fromUser: true, isSMS: true)
-                    Text("Sent as Text Message")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    
-                }
+                MessageBubble("\n\n\n\n.____________.", fromUser: true, messageType: .SMS, showStatus: true)
             }
             HStack {
                 Spacer()
-                VStack(alignment: .trailing, spacing: 5) {
-                    MessageBubble(content: "Boy it sure is great to live in 2012", fromUser: true, isSMS: true)
-                    Text("Sent as Text Message")
-                        .font(.caption)
-                        .foregroundStyle(.secondary) 
-                }
+                MessageBubble("Boy it sure is great to live in 2012", fromUser: true, messageType: .SMS, status: .error)
+            }
+            
+            HStack {
+                MessageBubble(imageName: "default", fromUser: false)
+                Spacer()
+            }
+            
+            HStack {
+                Spacer()
+                MessageBubble("So beautiful", fromUser: true, status: .delivered, showStatus: true)
             }
             
             HStack {
@@ -64,5 +61,10 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    VStack {
+        ContentView()
+//        XYSlider()
+//            .background(Color.iOS6MessageBackground)
+    }
+    
 }
