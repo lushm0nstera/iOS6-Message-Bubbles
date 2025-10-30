@@ -156,17 +156,3 @@ struct MessageBubble: View {
         }
     }
 }
-
-extension Shape {
-    func reversed() -> AnyView {
-        return AnyView(self.scaleEffect(x: -1))
-    }
-}
-
-//
-//if let imageName = imageName {
-//    Image(imageName)
-//        .resizable()
-//        .frame(maxWidth: 135, maxHeight: 150)
-//       
-//}
