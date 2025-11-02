@@ -10,7 +10,7 @@ struct MessageBubble: View {
     
     private enum ContentType {
         case text(String)
-        case image(String)
+        case image(Image)
     }
     
     enum MessageType {
@@ -41,8 +41,8 @@ struct MessageBubble: View {
     }
     
     // MARK: - Image Initializer
-    init(imageName: String, fromUser: Bool, messageType: MessageType? = .iMessage, status: DeliveryStatus? = nil, showStatus: Bool? = false) {
-        self.content = .image(imageName)
+    init(_ image: Image, fromUser: Bool, messageType: MessageType? = .iMessage, status: DeliveryStatus? = nil, showStatus: Bool? = false) {
+        self.content = .image(image)
         self.fromUser = fromUser
         self.messageType = messageType
         self.status = status
@@ -105,8 +105,8 @@ struct MessageBubble: View {
                     }.frame(maxWidth: 300, alignment: fromUser ? .trailing : .leading)
                 
                     
-                case .image(let imageName):
-                    Image(imageName)
+                case .image(let image):
+                    image
                         .resizable()
                         .scaleEffect(1.2)
                         .frame(maxWidth: 135, maxHeight: 150)

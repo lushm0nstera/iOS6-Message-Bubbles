@@ -40,7 +40,7 @@ struct ContentView: View {
             }
             
             HStack {
-                MessageBubble(imageName: "default", fromUser: false)
+                MessageBubble(Image("default"), fromUser: false)
                 Spacer()
             }
             
